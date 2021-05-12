@@ -63,3 +63,5 @@ const internCard = `<div class="card" style="width: 18rem;">
     </ul>
 </div>
 </div>`;
+
+export {baseHTML, managerCard, engineerCard, internCard}
