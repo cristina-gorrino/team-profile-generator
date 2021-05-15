@@ -9,6 +9,7 @@ function init () {
     createManager();
 }
 init();
+
 function createManager(){
     inquirer
     .prompt([
@@ -53,11 +54,91 @@ function createManager(){
     })
 }
 
+function createEngineer(){
+    inquirer
+    .prompt([
+        {
+            type: "input",
+            name: "employeeName",
+            message: "What is the engineer's name?",
+        },
+        {
+            type: "input",
+            name: "employeeID",
+            message: "What is the engineer's ID?",
+        },
+        {
+            type: "email",
+            name: "email",
+            message: "What is the engineer's email?",
+        },
+        {
+            type: "input",
+            name: "github",
+            message: "What is the engineer's github username?",
+        },
+        {
+            type: "list",
+            name:"nextAction",
+            message: "Add an engineer, intern, or finish building team?",
+            choices: ["Engineer", "Intern", "Finish"]
+    
+        }
+    ]).then(response => {
+        let engineer = new Engineer(response.name, response.id, response.email, response.github);
+        teamArr.push(engineer);
 
-// first ask for role
-// put together array of questions for inquirer
-// ask the repeat questions (spread)
-// then ask additional question
-// then add employee to team array
-// then ask if you want to add to the team
-// loop
+        if (response.nextAction === "Engineer") {
+            createEngineer();
+        } else if (response.nextAction === "Intern") {
+            createIntern();
+        } else if (response.nextAction === "Finish") {
+            writeHTML(teamArr);
+        }
+    })
+}
+
+function createIntern(){
+    inquirer
+    .prompt([
+        {
+            type: "input",
+            name: "employeeName",
+            message: "What is the intern's name?",
+        },
+        {
+            type: "input",
+            name: "employeeID",
+            message: "What is the intern's ID?",
+        },
+        {
+            type: "email",
+            name: "email",
+            message: "What is the intern's email?",
+        },
+        {
+            type: "input",
+            name: "school",
+            message: "What is the intern's school?",
+        },
+        {
+            type: "list",
+            name:"nextAction",
+            message: "Add an engineer, intern, or finish building team?",
+            choices: ["Engineer", "Intern", "Finish"]
+    
+        }
+    ]).then(response => {
+        let intern = new Intern(response.name, response.id, response.email, response.school);
+        teamArr.push(intern);
+
+        if (response.nextAction === "Engineer") {
+            createEngineer();
+        } else if (response.nextAction === "Intern") {
+            createIntern();
+        } else if (response.nextAction === "Finish") {
+            writeHTML(teamArr);
+        }
+    })
+}
+
