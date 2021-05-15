@@ -1,28 +1,58 @@
 const inquirer = require("inquirer");
-const Choices = require("inquirer/lib/objects/choices");
+const fs = require('fs');
+const Manager = require('./lib/Manager.js');
+const Engineer = require('./lib/Engineer.js');
+const Intern = require('./lib/Intern.js');
+const teamArr = [];
 
-inquirer
-.prompt([
-    {
-        type: "input",
-        name: "employeeName",
-        message: "What is the employee's name?",
-    },
-    {
-        type: "email",
-        name: "email",
-        message: "What is the employee's email?",
-    },
-    {
-        type: "list",
-        name:"role",
-        message: "What is the employee's role?",
-        choices: ["Manager", "Engineer", "Intern"]
+function init () {
+    createManager();
+}
+init();
+function createManager(){
+    inquirer
+    .prompt([
+        {
+            type: "input",
+            name: "employeeName",
+            message: "What is the manager's name?",
+        },
+        {
+            type: "input",
+            name: "employeeID",
+            message: "What is the manager's ID?",
+        },
+        {
+            type: "email",
+            name: "email",
+            message: "What is the manager's email?",
+        },
+        {
+            type: "input",
+            name: "officeNumber",
+            message: "What is the manager's office number?",
+        },
+        {
+            type: "list",
+            name:"nextAction",
+            message: "Add an engineer, intern, or finish building team?",
+            choices: ["Engineer", "Intern", "Finish"]
+    
+        }
+    ]).then(response => {
+        let manager = new Manager(response.name, response.id, response.email, response.officeNumber);
+        teamArr.push(manager);
 
-    }
-]).then(response => {
-    // TODO: Implement
-})
+        if (response.nextAction === "Engineer") {
+            createEngineer();
+        } else if (response.nextAction === "Intern") {
+            createIntern();
+        } else if (response.nextAction === "Finish") {
+            writeHTML(teamArr);
+        }
+    })
+}
+
 
 // first ask for role
 // put together array of questions for inquirer
