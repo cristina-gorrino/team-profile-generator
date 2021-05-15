@@ -1,7 +1,7 @@
 const fs = require('fs');
 import {baseHTML, managerCard, engineerCard, internCard} from '/.templates.js'
 
-function writeHTML() {
+function writeHTML(teamArr) {
     baseHTML
     teamArr = [manager, eng1, eng2, intern1, intern2];
     // Build the cards for each member of the team to insert into the baseHTML
@@ -19,6 +19,8 @@ function writeHTML() {
 // TODO: need to import the classes? and info from user choices?
 // TODO: need to pass in team member to card to fill in details
 // TODO: need to pass in accumulated cards to base HTML to insert into the template
+// Write CSS file that goes with HTML
+writeCss();
 }
 
 function writeCss() {
@@ -44,4 +46,5 @@ function writeCss() {
         err ? error.log(err) : console.log("Successfully wrote CSS") 
     })
 }
-// writeCss();
+
+export {writeHTML};

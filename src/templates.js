@@ -21,47 +21,58 @@ const baseHTML = `<!DOCTYPE html>
 </body>
 </html>`;
 
+function managerCard(employee) {
+    const managerCard = `<div class="card" style="width: 18rem;">
+    <div class="card-header text-white bg-primary">
+        <h2>${employee.name}</h2>
+        <div><i class="fas fa-mug-hot"></i> Manager</div>
+    </div>
+    <div class="card-body">
+        <ul class="list-group">
+        <li class="list-group-item">ID: <span>${employee.id}</span></li>
+        <li class="list-group-item">Email: <a href = "mailto: ${employee.email}"><span>${employee.email}</span><</a></li>
+        <li class="list-group-item">Office Number: <span>${employee.officeNumber}</span></li>
+        </ul>
+    </div>
+    </div>`;
+    return managerCard;
+}
 
-const managerCard = `<div class="card" style="width: 18rem;">
-<div class="card-header text-white bg-primary">
-    <h2>Name</h2>
-    <div><i class="fas fa-mug-hot"></i> Manager</div>
-</div>
-<div class="card-body">
-    <ul class="list-group">
-    <li class="list-group-item">ID: <span>${this.id}</span></li>
-    <li class="list-group-item">Email: <span>${this.email}</span></li>
-    <li class="list-group-item">Office Number: <span>${this.officeNumber}</span></li>
-    </ul>
-</div>
-</div>`;
 
-const engineerCard = `<div class="card" style="width: 18rem;">
-<div class="card-header text-white bg-primary">
-    <h2>Name</h2>
-    <div><i class="fas fa-glasses"></i> Engineer</div>
-</div>
-<div class="card-body">
-    <ul class="list-group">
-    <li class="list-group-item">ID: <span>${this.id}</span></li>
-    <li class="list-group-item">Email: <span>${this.email}</span></li>
-    <li class="list-group-item">GitHub: <span>${this.guthub}</span></li>
-    </ul>
-</div>
-</div>`;
+function engineerCard(employee) {
+    const engineerCard = `<div class="card" style="width: 18rem;">
+    <div class="card-header text-white bg-primary">
+        <h2>${employee.name}</h2>
+        <div><i class="fas fa-glasses"></i> Engineer</div>
+    </div>
+    <div class="card-body">
+        <ul class="list-group">
+        <li class="list-group-item">ID: <span>${employee.id}</span></li>
+        <li class="list-group-item">Email: <a href = "mailto: ${employee.email}"><span>${employee.email}</span><</a></li>
+        <li class="list-group-item">GitHub: <a href = "https://github.com/${employee.github}" target = "_blank"><span>https://github.com/${employee.github}</span></a></li>
+        </ul>
+    </div>
+    </div>`;
+    return engineerCard;
+}
 
-const internCard = `<div class="card" style="width: 18rem;">
-<div class="card-header text-white bg-primary">
-    <h2>Name</h2>
-    <div><i class="fas fa-user-graduate"></i> Intern</div>
-</div>
-<div class="card-body">
-    <ul class="list-group">
-    <li class="list-group-item">ID: <span>${this.id}</span></li>
-    <li class="list-group-item">Email: <span>${this.email}</span></li>
-    <li class="list-group-item">School: <span>${this.school}</span></li>
-    </ul>
-</div>
-</div>`;
 
-export {baseHTML, managerCard, engineerCard, internCard}
+function internCard(employee) {
+    const internCard = `<div class="card" style="width: 18rem;">
+    <div class="card-header text-white bg-primary">
+        <h2>${employee.name}</h2>
+        <div><i class="fas fa-user-graduate"></i> Intern</div>
+    </div>
+    <div class="card-body">
+        <ul class="list-group">
+        <li class="list-group-item">ID: <span>${employee.id}</span></li>
+        <li class="list-group-item">Email: <a href = "mailto: ${employee.email}"><span>${employee.email}</span><</a></li>
+        <li class="list-group-item">School: <span>${employee.school}</span></li>
+        </ul>
+    </div>
+    </div>`;
+    return internCard;
+}
+
+
+export {baseHTML, managerCard, engineerCard, internCard};

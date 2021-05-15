@@ -3,9 +3,11 @@ const fs = require('fs');
 const Manager = require('./lib/Manager.js');
 const Engineer = require('./lib/Engineer.js');
 const Intern = require('./lib/Intern.js');
+import {writeHTML} from './src/render-content.js';
 const teamArr = [];
 
 function init () {
+    // Always begin the team by creating the manager
     createManager();
 }
 init();
@@ -49,7 +51,7 @@ function createManager(){
         } else if (response.nextAction === "Intern") {
             createIntern();
         } else if (response.nextAction === "Finish") {
-            writeHTML(teamArr);
+            writeFiles(teamArr);
         }
     })
 }
@@ -93,7 +95,7 @@ function createEngineer(){
         } else if (response.nextAction === "Intern") {
             createIntern();
         } else if (response.nextAction === "Finish") {
-            writeHTML(teamArr);
+            writeFiles(teamArr);
         }
     })
 }
@@ -137,8 +139,14 @@ function createIntern(){
         } else if (response.nextAction === "Intern") {
             createIntern();
         } else if (response.nextAction === "Finish") {
-            writeHTML(teamArr);
+            writeFiles(teamArr);
         }
     })
+}
+
+function writeFiles(teamArr) {
+    fs.writeFile("./dist/index.html", writeHTML(teamArr), (err) => {
+        err ? error.log(err) : console.log("Successfully wrote HTML")} 
+    );
 }
 
