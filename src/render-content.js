@@ -1,20 +1,20 @@
 const fs = require('fs');
-import {baseHTML, managerCard, engineerCard, internCard} from '/.templates.js'
+const templates = require('./templates.js'); 
 
 function writeHTML(teamArr) {
     // Build the cards for each member of the team by checking for role and using correct template
     var teamCards = teamArr.map((employee) => {
         let role = employee.getRole();
         if (role === "Manager"){
-            managerCard(employee);
+            return templates.managerCard(employee);
         } else if (role === "Engineer") {
-            engineerCard(employee);
+            return templates.engineerCard(employee);
         } else if (role === "Intern") {
-            internCard(employee);
+           return templates.internCard(employee);
         }
     });
 
-   const finalContent = baseHTML(teamCards);
+   const finalContent = templates.baseHTML(teamCards);
     // Write CSS file that goes with HTML
     writeCss();
     return finalContent;
@@ -44,4 +44,6 @@ function writeCss() {
     })
 }
 
-export {writeHTML};
+module.exports = {
+    writeHTML
+}

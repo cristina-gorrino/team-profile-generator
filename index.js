@@ -3,7 +3,7 @@ const fs = require('fs');
 const Manager = require('./lib/Manager.js');
 const Engineer = require('./lib/Engineer.js');
 const Intern = require('./lib/Intern.js');
-import {writeHTML} from './src/render-content.js';
+const renderContent = require ('./src/render-content.js') ;
 const teamArr = [];
 
 function init () {
@@ -17,12 +17,12 @@ function createManager(){
     .prompt([
         {
             type: "input",
-            name: "employeeName",
+            name: "name",
             message: "What is the manager's name?",
         },
         {
             type: "input",
-            name: "employeeID",
+            name: "id",
             message: "What is the manager's ID?",
         },
         {
@@ -61,12 +61,12 @@ function createEngineer(){
     .prompt([
         {
             type: "input",
-            name: "employeeName",
+            name: "name",
             message: "What is the engineer's name?",
         },
         {
             type: "input",
-            name: "employeeID",
+            name: "id",
             message: "What is the engineer's ID?",
         },
         {
@@ -105,12 +105,12 @@ function createIntern(){
     .prompt([
         {
             type: "input",
-            name: "employeeName",
+            name: "name",
             message: "What is the intern's name?",
         },
         {
             type: "input",
-            name: "employeeID",
+            name: "id",
             message: "What is the intern's ID?",
         },
         {
@@ -145,7 +145,7 @@ function createIntern(){
 }
 
 function writeFiles(teamArr) {
-    fs.writeFile("./dist/index.html", writeHTML(teamArr), (err) => {
+    fs.writeFile("./dist/index.html", renderContent.writeHTML(teamArr), (err) => {
         err ? error.log(err) : console.log("Successfully wrote HTML")} 
     );
 }

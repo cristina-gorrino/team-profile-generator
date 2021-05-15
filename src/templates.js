@@ -34,7 +34,7 @@ function managerCard(employee) {
     <div class="card-body">
         <ul class="list-group">
         <li class="list-group-item">ID: <span>${employee.id}</span></li>
-        <li class="list-group-item">Email: <a href = "mailto: ${employee.email}"><span>${employee.email}</span><</a></li>
+        <li class="list-group-item">Email: <a href = "mailto: ${employee.email}"><span>${employee.email}</span></a></li>
         <li class="list-group-item">Office Number: <span>${employee.officeNumber}</span></li>
         </ul>
     </div>
@@ -52,7 +52,7 @@ function engineerCard(employee) {
     <div class="card-body">
         <ul class="list-group">
         <li class="list-group-item">ID: <span>${employee.id}</span></li>
-        <li class="list-group-item">Email: <a href = "mailto: ${employee.email}"><span>${employee.email}</span><</a></li>
+        <li class="list-group-item">Email: <a href = "mailto: ${employee.email}"><span>${employee.email}</span></a></li>
         <li class="list-group-item">GitHub: <a href = "https://github.com/${employee.github}" target = "_blank"><span>https://github.com/${employee.github}</span></a></li>
         </ul>
     </div>
@@ -70,7 +70,7 @@ function internCard(employee) {
     <div class="card-body">
         <ul class="list-group">
         <li class="list-group-item">ID: <span>${employee.id}</span></li>
-        <li class="list-group-item">Email: <a href = "mailto: ${employee.email}"><span>${employee.email}</span><</a></li>
+        <li class="list-group-item">Email: <a href = "mailto: ${employee.email}"><span>${employee.email}</span></a></li>
         <li class="list-group-item">School: <span>${employee.school}</span></li>
         </ul>
     </div>
@@ -78,5 +78,9 @@ function internCard(employee) {
     return internCard;
 }
 
-
-export {baseHTML, managerCard, engineerCard, internCard};
+module.exports = {
+    baseHTML,
+    managerCard,
+    engineerCard,
+    internCard
+}
