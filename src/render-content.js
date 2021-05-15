@@ -2,26 +2,23 @@ const fs = require('fs');
 import {baseHTML, managerCard, engineerCard, internCard} from '/.templates.js'
 
 function writeHTML(teamArr) {
-    baseHTML
-    teamArr = [manager, eng1, eng2, intern1, intern2];
-    // Build the cards for each member of the team to insert into the baseHTML
-    var teamCards
-    for (let i=0; i< teamArr.length; i++) {
-        let role = teamArr[i].getRole();
+    // Build the cards for each member of the team by checking for role and using correct template
+    var teamCards = teamArr.map((employee) => {
+        let role = employee.getRole();
         if (role === "Manager"){
-            teamcards += managerCard;
+            managerCard(employee);
         } else if (role === "Engineer") {
-            teamCards =+ engineerCard;
+            engineerCard(employee);
         } else if (role === "Intern") {
-            teamCards += internCard;
+            internCard(employee);
         }
+    });
+
+   const finalContent = baseHTML(teamCards);
+    // Write CSS file that goes with HTML
+    writeCss();
+    return finalContent;
     }
-// TODO: need to import the classes? and info from user choices?
-// TODO: need to pass in team member to card to fill in details
-// TODO: need to pass in accumulated cards to base HTML to insert into the template
-// Write CSS file that goes with HTML
-writeCss();
-}
 
 function writeCss() {
     const content = `.header-bar{
