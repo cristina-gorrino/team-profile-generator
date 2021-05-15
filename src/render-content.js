@@ -10,11 +10,11 @@ function writeHTML(teamArr) {
         } else if (role === "Engineer") {
             return templates.engineerCard(employee);
         } else if (role === "Intern") {
-           return templates.internCard(employee);
+            return templates.internCard(employee);
         }
     });
 
-   const finalContent = templates.baseHTML(teamCards);
+    const finalContent = templates.baseHTML(teamCards);
     // Write CSS file that goes with HTML
     writeCss();
     return finalContent;
