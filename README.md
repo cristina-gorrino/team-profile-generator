@@ -21,7 +21,9 @@
 
 ![MIT](https://img.shields.io/badge/license-MIT-brightgreen)
 
-This app prompts the user to enter information about employees on an engineering team. Then it takes the information and generates an HTML page that shows a card for each employee that displays the person's information.
+This app prompts the user to enter information about employees on an engineering team into the console. The user can continue adding members to the team, and when they are finished it will stop building the team. Then it takes the information and generates an HTML page that shows a card for each employee that displays the person's information.
+
+Demonstration Video: https://drive.google.com/file/d/1SCULO1cctjGqlcyjRi3ue5PWaCtUNDyP/view
 
 <a name="installation"></a>
 ## Installation
